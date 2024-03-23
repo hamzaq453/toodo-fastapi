@@ -1,0 +1,13 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "toodo_1/main.py", 
+        "use": "@vercel/python",  
+        "config": {
+          "command": "docker run -d --rm my-fastapi-todo-app" 
+        }
+      }
+    ]
+  }
+  
