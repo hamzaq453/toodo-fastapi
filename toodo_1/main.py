@@ -92,3 +92,15 @@ def update_todo(todo_id: int, updated_todo: Todo):
         session.commit()
         session.refresh(todo)  # Refresh to reflect changes
         return todo
+
+@app.delete("/todos/{todo_id}")
+def delete_todo(todo_id: int):
+    with Session(engine) as session:
+        todo = session.get(Todo, todo_id)
+        if not todo:
+            return {"error": "Todo not found"}
+
+        session.delete(todo)
+        session.commit()
+
+        return {"message": "Todo deleted successfully"}
